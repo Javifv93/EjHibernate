@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 27 ene. 2021 10:46:18 by Hibernate Tools 5.2.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="ejercicioorm" dynamic-insert="false" dynamic-update="false" mutable="true" name="modelo.entidades.Libro" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="libro">
+        <id name="codLibro" type="string">
+            <column length="10" name="CodLibro"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="titulo" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="Titulo" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="editorial" optimistic-lock="true" type="string" unique="false">
+            <column length="45" name="Editorial" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="precio" optimistic-lock="true" type="float" unique="false">
+            <column name="Precio" not-null="true" precision="12" scale="0"/>
+        </property>
+        <property generated="never" lazy="false" name="ejemplarIdEjemplar" optimistic-lock="true" type="int" unique="false">
+            <column name="Ejemplar_IdEjemplar" not-null="true"/>
+        </property>
+        <bag embed-xml="true" fetch="select" inverse="false" lazy="true" mutable="true" name="autores" optimistic-lock="true" table="autorlibro">
+            <key on-delete="noaction">
+                <column length="10" name="CodLibro" not-null="true"/>
+            </key>
+            <many-to-many class="modelo.entidades.Autor" column="idAutor" embed-xml="true" not-found="exception"/>
+        </bag>
+        <bag embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="ejemplares" optimistic-lock="true" table="ejemplar">
+            <key on-delete="noaction">
+                <column length="10" name="CodLibro" not-null="true"/>
+            </key>
+            <one-to-many class="modelo.entidades.Ejemplar" embed-xml="true" not-found="exception"/>
+        </bag>
+    </class>
+</hibernate-mapping>
