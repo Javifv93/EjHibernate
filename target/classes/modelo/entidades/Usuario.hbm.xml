@@ -15,17 +15,12 @@
         <property generated="never" lazy="false" name="fechaNacimiento" optimistic-lock="true" type="date" unique="false">
             <column length="10" name="FechaNacimiento" not-null="true"/>
         </property>
-        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="contactousuarios" optimistic-lock="true" sort="unsorted" table="contactousuario">
-            <key on-delete="noaction">
-                <column name="IdUsuario" not-null="true"/>
-            </key>
-            <one-to-many class="modelo.entidades.Contactousuario" embed-xml="true" not-found="exception"/>
-        </set>
-        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="prestamos" optimistic-lock="true" sort="unsorted" table="prestamo">
+        <one-to-one name="contactoUsuario" constrained="false" embed-xml="true" class="Contactousuario"></one-to-one>
+        <bag embed-xml="true" fetch="select" inverse="false" lazy="true" mutable="true" name="prestamos" optimistic-lock="true" table="prestamo">
             <key on-delete="noaction">
                 <column name="IdUsuario" not-null="true"/>
             </key>
             <one-to-many class="modelo.entidades.Prestamo" embed-xml="true" not-found="exception"/>
-        </set>
+        </bag>
     </class>
 </hibernate-mapping>

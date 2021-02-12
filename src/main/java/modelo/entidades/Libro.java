@@ -21,9 +21,8 @@ public class Libro implements java.io.Serializable {
 //	private Set ejemplars = new HashSet(0);
 	private ArrayList<Autor> autores = new ArrayList<Autor>();
 	private ArrayList<Ejemplar> ejemplares = new ArrayList<Ejemplar>();
-	public Libro() {
-	}
 	
+	public Libro() {}	
 
 	public Libro(String codLibro, String titulo, String editorial, float precio, int ejemplarIdEjemplar) {
 		this.codLibro = codLibro;

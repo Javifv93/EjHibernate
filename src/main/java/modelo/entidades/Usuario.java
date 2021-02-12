@@ -1,6 +1,7 @@
 package modelo.entidades;
 // Generated 27 ene. 2021 10:46:18 by Hibernate Tools 5.2.12.Final
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,8 +15,8 @@ public class Usuario implements java.io.Serializable {
 	private String nombre;
 	private String apellidos;
 	private Date fechaNacimiento;
-	private Set contactousuarios = new HashSet(0);
-	private Set prestamos = new HashSet(0);
+	private ArrayList<Prestamo> prestamos = new ArrayList<Prestamo>();
+	private Contactousuario contactousuarios = new Contactousuario();
 
 	public Usuario() {
 	}
@@ -27,8 +28,8 @@ public class Usuario implements java.io.Serializable {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
-	public Usuario(int idUsuario, String nombre, String apellidos, Date fechaNacimiento, Set contactousuarios,
-			Set prestamos) {
+	public Usuario(int idUsuario, String nombre, String apellidos, Date fechaNacimiento, Contactousuario contactousuarios,
+			ArrayList<Prestamo> prestamos) {
 		this.idUsuario = idUsuario;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
@@ -69,19 +70,19 @@ public class Usuario implements java.io.Serializable {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
-	public Set getContactousuarios() {
+	public Contactousuario getContactousuarios() {
 		return this.contactousuarios;
 	}
 
-	public void setContactousuarios(Set contactousuarios) {
+	public void setContactousuarios(Contactousuario contactousuarios) {
 		this.contactousuarios = contactousuarios;
 	}
 
-	public Set getPrestamos() {
+	public ArrayList<Prestamo> getPrestamos() {
 		return this.prestamos;
 	}
 
-	public void setPrestamos(Set prestamos) {
+	public void setPrestamos(ArrayList<Prestamo> prestamos) {
 		this.prestamos = prestamos;
 	}
 
