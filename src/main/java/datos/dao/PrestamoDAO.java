@@ -5,25 +5,23 @@ import org.hibernate.Transaction;
 
 import datos.configuracion.Conexion;
 import modelo.entidades.Autor;
-import modelo.entidades.Ejemplar;
 import modelo.entidades.Libro;
 import modelo.entidades.Prestamo;
 import modelo.entidades.Usuario;
 
-public class EjemplarDAO {
-
-	public void insertarEjemplar(Ejemplar ejemplar) {
+public class PrestamoDAO {
+	public void insertarPrestamo(Prestamo prestamo) {
 		Transaction transaccion = null;
 		/**Try-whit-resources: Inicia la Session y al salir del try se cierra sola*/
 		try (Session sesion = Conexion.obtenerSesion() ) {
 			//Inicias la transaccion
 			transaccion = sesion.beginTransaction();
 			//guardas el objeto autor en la BBDD
-			sesion.save(ejemplar);
+			sesion.save(prestamo);
 			
 			//Commit y refresh no serian 100% necesarios en este caso, pero no esta mal ponerlos por si aca
 			transaccion.commit();
-			sesion.refresh(ejemplar);
+			sesion.refresh(prestamo);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -34,39 +32,35 @@ public class EjemplarDAO {
 			}
 		}
 	}
-	public Ejemplar obtenerEjemplarPorID(int id) {
-		Ejemplar ejemplar;
+	public Prestamo obtenerPrestamoPorID(int id) {
+		Prestamo prestamo;
 		try (Session sesion = Conexion.obtenerSesion() ) {
-			ejemplar = sesion.get(Ejemplar.class, id);
-			//Comprueba que el Ejemplar con id pasada exista, y da un error en caso de que no sea así
-			if(ejemplar == null) {
-				System.out.println("No se encuentra el Ejemplar referenciado");
+			prestamo = sesion.get(Prestamo.class, id);
+			//Comprueba que el Prestamo con id pasada exista, y da un error en caso de que no sea así
+			if(prestamo == null) {
+				System.out.println("No se encuentra el Prestamo referenciado");
 			}
 		}catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			ejemplar = null;
+			prestamo = null;
 		}
-		return ejemplar;
+		return prestamo;
 	}
-	public void borrarEjemplar(Ejemplar ejemplar) {
+	public void borrarPrestamo(Prestamo prestamo) {
 		Transaction transaccion = null;
 		/**Try-whit-resources: Inicia la Session y al salir del try se cierra sola*/
 		try (Session sesion = Conexion.obtenerSesion() ) {
-			Ejemplar e = obtenerEjemplarPorID(ejemplar.getIdEjemplar());
-			if(e!=null) {
+			Prestamo p = obtenerPrestamoPorID(prestamo.getIdPrestamo());
+			if(p!=null) {
 				//Inicias la transacción
 				transaccion = sesion.beginTransaction();
 				
-				//Como Ejemplar tiene una lista de Prestamos, la recorro y los borro uno a uno en cascada
-				for(Prestamo prestamo:e.getPrestamos()) {
-					sesion.delete(prestamo);
-				}
-				//borra el objeto Ejemplar en la BBDD
-				sesion.delete(ejemplar);
+				//borras el objeto prestamo en la BBDD
+				sesion.delete(prestamo);
 				
 				transaccion.commit();
-				sesion.refresh(ejemplar);
+				sesion.refresh(prestamo);
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -78,17 +72,17 @@ public class EjemplarDAO {
 			}
 		}
 	}
-	public void modificarEjemplar(Ejemplar ejemplar) {
+	public void modificarPrestamo(Prestamo prestamo) {
 		Transaction transaccion = null;
 		/**Try-whit-resources: Inicia la Session y al salir del try se cierra sola*/
 		try (Session sesion = Conexion.obtenerSesion() ) {
 			//Inicias la transaccion
 			transaccion = sesion.beginTransaction();
 			//guardas el objeto autor en la BBDD
-			sesion.update(ejemplar);
-			
+			sesion.update(prestamo);
+		
 			transaccion.commit();
-			sesion.refresh(ejemplar);
+			sesion.refresh(prestamo);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -99,5 +93,4 @@ public class EjemplarDAO {
 			}
 		}
 	}
-
 }
