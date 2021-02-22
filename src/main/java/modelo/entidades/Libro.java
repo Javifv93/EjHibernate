@@ -3,6 +3,7 @@ package modelo.entidades;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import com.mysql.fabric.xmlrpc.base.Array;
@@ -16,29 +17,24 @@ public class Libro implements java.io.Serializable {
 	private String titulo;
 	private String editorial;
 	private float precio;
-	private int ejemplarIdEjemplar;
-//	private Set autorlibros = new HashSet(0);
-//	private Set ejemplars = new HashSet(0);
-	private ArrayList<Autor> autores = new ArrayList<Autor>();
-	private ArrayList<Ejemplar> ejemplares = new ArrayList<Ejemplar>();
+	private List<Autor> autores = new ArrayList<Autor>();
+	private List<Ejemplar> ejemplares = new ArrayList<Ejemplar>();
 	
 	public Libro() {}	
 
-	public Libro(String codLibro, String titulo, String editorial, float precio, int ejemplarIdEjemplar) {
+	public Libro(String codLibro, String titulo, String editorial, float precio) {
 		this.codLibro = codLibro;
 		this.titulo = titulo;
 		this.editorial = editorial;
 		this.precio = precio;
-		this.ejemplarIdEjemplar = ejemplarIdEjemplar;
 	}
 
-	public Libro(String codLibro, String titulo, String editorial, float precio, int ejemplarIdEjemplar,
-			ArrayList<Autor> autores, ArrayList<Ejemplar> ejemplares) {
+	public Libro(String codLibro, String titulo, String editorial, float precio,
+			List<Autor> autores, List<Ejemplar> ejemplares) {
 		this.codLibro = codLibro;
 		this.titulo = titulo;
 		this.editorial = editorial;
 		this.precio = precio;
-		this.ejemplarIdEjemplar = ejemplarIdEjemplar;
 		this.autores = autores;
 		this.ejemplares = ejemplares;
 		//this.autorlibros = autorlibros;
@@ -77,42 +73,19 @@ public class Libro implements java.io.Serializable {
 		this.precio = precio;
 	}
 
-	public int getEjemplarIdEjemplar() {
-		return this.ejemplarIdEjemplar;
-	}
-
-	public void setEjemplarIdEjemplar(int ejemplarIdEjemplar) {
-		this.ejemplarIdEjemplar = ejemplarIdEjemplar;
-	}
-
-//	public Set getAutorlibros() {
-//		return this.autorlibros;
-//	}
-//
-//	public void setAutorlibros(Set autorlibros) {
-//		this.autorlibros = autorlibros;
-//	}
-//
-//	public Set getEjemplars() {
-//		return this.ejemplars;
-//	}
-//
-//	public void setEjemplars(Set ejemplars) {
-//		this.ejemplars = ejemplars;
-//	}
-	public ArrayList<Autor> getAutores() {
+	public List<Autor> getAutores() {
 		return autores;
 	}
 
-	public void setAutores(ArrayList<Autor> autores) {
+	public void setAutores(List<Autor> autores) {
 		this.autores = autores;
 	}
 
-	public ArrayList<Ejemplar> getEjemplares() {
+	public List<Ejemplar> getEjemplares() {
 		return ejemplares;
 	}
 
-	public void setEjemplares(ArrayList<Ejemplar> ejemplares) {
+	public void setEjemplares(List<Ejemplar> ejemplares) {
 		this.ejemplares = ejemplares;
 	}
 

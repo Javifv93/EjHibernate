@@ -4,6 +4,7 @@ package modelo.entidades;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -15,7 +16,7 @@ public class Usuario implements java.io.Serializable {
 	private String nombre;
 	private String apellidos;
 	private Date fechaNacimiento;
-	private ArrayList<Prestamo> prestamos = new ArrayList<Prestamo>();
+	private List<Prestamo> prestamos = new ArrayList<Prestamo>();
 	private Contactousuario contactousuarios = new Contactousuario();
 
 	public Usuario() {
@@ -29,7 +30,7 @@ public class Usuario implements java.io.Serializable {
 	}
 
 	public Usuario(int idUsuario, String nombre, String apellidos, Date fechaNacimiento, Contactousuario contactousuarios,
-			ArrayList<Prestamo> prestamos) {
+			List<Prestamo> prestamos) {
 		this.idUsuario = idUsuario;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
@@ -78,11 +79,11 @@ public class Usuario implements java.io.Serializable {
 		this.contactousuarios = contactousuarios;
 	}
 
-	public ArrayList<Prestamo> getPrestamos() {
+	public List<Prestamo> getPrestamos() {
 		return this.prestamos;
 	}
 
-	public void setPrestamos(ArrayList<Prestamo> prestamos) {
+	public void setPrestamos(List<Prestamo> prestamos) {
 		this.prestamos = prestamos;
 	}
 

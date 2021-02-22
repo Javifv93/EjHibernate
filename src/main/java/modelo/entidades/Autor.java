@@ -3,6 +3,7 @@ package modelo.entidades;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -14,7 +15,7 @@ public class Autor implements java.io.Serializable {
 	private String nombre;
 	private String apellidos;
 	//private Set autorlibros = new HashSet(0);
-	private ArrayList<Libro> libros = new ArrayList<Libro>();
+	private List<Libro> libros = new ArrayList<Libro>();
 
 	public Autor() {
 	}
@@ -25,7 +26,7 @@ public class Autor implements java.io.Serializable {
 		this.apellidos = apellidos;
 	}
 
-	public Autor(int idAutor, String nombre, String apellidos, ArrayList<Libro> libros) {
+	public Autor(int idAutor, String nombre, String apellidos, List<Libro> libros) {
 		this.idAutor = idAutor;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
@@ -64,10 +65,10 @@ public class Autor implements java.io.Serializable {
 //	public void setAutorlibros(Set autorlibros) {
 //		this.autorlibros = autorlibros;
 //	}
-	public ArrayList<Libro> getLibros(){
+	public List<Libro> getLibros(){
 		return libros;
 	}
-	public void setLibros(ArrayList<Libro> libros) {
+	public void setLibros(List<Libro> libros) {
 		this.libros = libros;
 	}
 }

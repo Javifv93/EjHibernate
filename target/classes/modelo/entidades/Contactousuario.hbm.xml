@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated 27 ene. 2021 10:46:18 by Hibernate Tools 5.2.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 27 ene. 2021 10:48:56 by Hibernate Tools 5.2.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
-    <class catalog="ejercicioorm" dynamic-insert="false" dynamic-update="false" mutable="true" name="modelo.entidades.Contactousuario" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="contactousuario">
-        <composite-id class="modelo.entidades.ContactousuarioId" mapped="false" name="id" unsaved-value="undefined">
-            <key-property name="idUsuario" type="int">
-                <column name="IdUsuario"/>
-            </key-property>
-            <key-property name="email" type="string">
-                <column length="45" name="Email"/>
-            </key-property>
-            <key-property name="telefonoMovil" type="string">
-                <column length="9" name="TelefonoMovil"/>
-            </key-property>
-            <key-property name="telefonoFijo" type="string">
-                <column length="9" name="TelefonoFijo"/>
-            </key-property>
-        </composite-id>
-        <many-to-one class="modelo.entidades.Usuario" embed-xml="true" fetch="select" insert="false" name="usuario" not-found="exception" optimistic-lock="true" unique="false" update="false">
-            <column name="IdUsuario" not-null="true"/>
-        </many-to-one>
+    <class  dynamic-insert="false" dynamic-update="false" mutable="true" name="modelo.entidades.Contactousuario" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="contactousuario">
+        <id name="idUsuario" type="int">
+            <column name="idUsuario"/>
+            <generator class="foreign">
+                <param name="property">usuario</param>
+            </generator>
+        </id>
+        <one-to-one class="modelo.entidades.Usuario" constrained="true" embed-xml="true" name="usuario"/>
+        <property generated="never" lazy="false" name="email" optimistic-lock="true" type="string" unique="false">
+            <column length="45" name="email" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="telefonoMovil" optimistic-lock="true" type="string" unique="false">
+            <column length="9" name="telefonoMovil" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="telefonoFijo" optimistic-lock="true" type="string" unique="false">
+            <column length="9" name="telefonoFijo" not-null="true"/>
+        </property>
     </class>
 </hibernate-mapping>
+
+

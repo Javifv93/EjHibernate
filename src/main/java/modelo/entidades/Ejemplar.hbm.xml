@@ -4,7 +4,7 @@
     <class catalog="ejercicioorm" dynamic-insert="false" dynamic-update="false" mutable="true" name="modelo.entidades.Ejemplar" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="ejemplar">
         <id name="idEjemplar" type="int">
             <column name="idEjemplar"/>
-            <generator class="assigned"/>
+            <generator class="identity"/>
         </id>
         <many-to-one class="modelo.entidades.Libro" embed-xml="true" fetch="select" insert="true" name="libro" not-found="exception" optimistic-lock="true" unique="false" update="true">
             <column length="10" name="CodLibro" not-null="true"/>

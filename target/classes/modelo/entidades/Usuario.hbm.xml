@@ -4,7 +4,7 @@
     <class catalog="ejercicioorm" dynamic-insert="false" dynamic-update="false" mutable="true" name="modelo.entidades.Usuario" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="usuario">
         <id name="idUsuario" type="int">
             <column name="IdUsuario"/>
-            <generator class="assigned"/>
+            <generator class="identity"/>
         </id>
         <property generated="never" lazy="false" name="nombre" optimistic-lock="true" type="string" unique="false">
             <column length="45" name="Nombre" not-null="true"/>
@@ -15,7 +15,7 @@
         <property generated="never" lazy="false" name="fechaNacimiento" optimistic-lock="true" type="date" unique="false">
             <column length="10" name="FechaNacimiento" not-null="true"/>
         </property>
-        <one-to-one name="contactoUsuario" constrained="false" embed-xml="true" class="Contactousuario"></one-to-one>
+        <one-to-one cascade="all" name="contactousuarios" class="modelo.entidades.Contactousuario"></one-to-one>
         <bag embed-xml="true" fetch="select" inverse="false" lazy="true" mutable="true" name="prestamos" optimistic-lock="true" table="prestamo">
             <key on-delete="noaction">
                 <column name="IdUsuario" not-null="true"/>

@@ -22,7 +22,7 @@ public class UsuarioDAO {
 			
 			//Commit y refresh no serian 100% necesarios en este caso, pero no esta mal ponerlos por si aca
 			transaccion.commit();
-			sesion.refresh(usuario);
+			//sesion.refresh(usuario);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -57,10 +57,10 @@ public class UsuarioDAO {
 				//Inicias la transacción
 				transaccion = sesion.beginTransaction();
 					
-				//Como Usuario tiene una lista de Prestamos, la recorro y los borro uno a uno en cascada
-				for(Prestamo prestamo:u.getPrestamos()) {				
-					sesion.delete(prestamo);
-				}
+//				//Como Usuario tiene una lista de Prestamos, la recorro y los borro uno a uno en cascada
+//				for(Prestamo prestamo:u.getPrestamos()) {				
+//					sesion.delete(prestamo);
+//				}
 				//borra el objeto usuario en la BBDD
 				sesion.delete(usuario);
 					

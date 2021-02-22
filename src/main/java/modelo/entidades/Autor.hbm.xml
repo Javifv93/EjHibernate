@@ -4,7 +4,7 @@
     <class catalog="ejercicioorm" dynamic-insert="false" dynamic-update="false" mutable="true" name="modelo.entidades.Autor" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="autor">
         <id name="idAutor" type="int">
             <column name="idAutor"/>
-            <generator class="assigned"/>
+            <generator class="identity"/>
         </id>
         <property generated="never" lazy="false" name="nombre" optimistic-lock="true" type="string" unique="false">
             <column length="45" name="Nombre" not-null="true"/>

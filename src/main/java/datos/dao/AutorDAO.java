@@ -54,10 +54,10 @@ public class AutorDAO {
 				//Inicias la transacción
 				transaccion = sesion.beginTransaction();
 				
-				//Como Autor tiene una lista de Libros, la recorro y los borro uno a uno en cascada
-				for(Libro libro:a.getLibros()) {
-					sesion.delete(libro);
-				}
+//				//Como Autor tiene una lista de Libros, la recorro y los borro uno a uno en cascada
+//				for(Libro libro:a.getLibros()) {
+//					sesion.delete(libro);
+//				}
 				//borra el objeto autor en la BBDD
 				sesion.delete(autor); 
 				

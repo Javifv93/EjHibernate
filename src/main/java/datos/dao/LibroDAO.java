@@ -52,24 +52,24 @@ public class LibroDAO {
 		Transaction transaccion = null;
 		/**Try-whit-resources: Inicia la Session y al salir del try se cierra sola*/
 		try (Session sesion = Conexion.obtenerSesion() ) {
-			Libro l = obtenerLibroPorID(libro.getCodLibro());
-			if(l!=null)  {
+			//Libro l = obtenerLibroPorID(libro.getCodLibro());
+			//if(l!=null)  {
 				//Inicias la transacción
 				transaccion = sesion.beginTransaction();
 				
-				//Como cada Libro tiene una lista de Autores y una lista de Ejemplares, las recorro y los borro uno a uno en cascada
-				for(Autor autor:l.getAutores()) {
-					sesion.delete(autor);
-				}
-				for(Ejemplar ejemplar:l.getEjemplares()) {
-					sesion.delete(ejemplar);
-				}
+//				//Como cada Libro tiene una lista de Autores y una lista de Ejemplares, las recorro y los borro uno a uno en cascada
+//				for(Autor autor:l.getAutores()) {
+//					sesion.delete(autor);
+//				}
+//				for(Ejemplar ejemplar:l.getEjemplares()) {
+//					sesion.delete(ejemplar);
+//				}
 				//borra el objeto Libro en la BBDD
 				sesion.delete(libro);
 				
 				transaccion.commit();
-				sesion.refresh(libro);
-			}
+				//sesion.refresh(libro);
+			//}
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

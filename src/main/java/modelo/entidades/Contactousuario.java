@@ -10,6 +10,15 @@ public class Contactousuario implements java.io.Serializable {
 	private String email;
 	private String telefonoMovil;
 	private String telefonoFijo;
+	private Usuario usuario;
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 
 	public Contactousuario() {
 	}

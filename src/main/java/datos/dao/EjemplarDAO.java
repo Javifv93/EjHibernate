@@ -58,10 +58,10 @@ public class EjemplarDAO {
 				//Inicias la transacción
 				transaccion = sesion.beginTransaction();
 				
-				//Como Ejemplar tiene una lista de Prestamos, la recorro y los borro uno a uno en cascada
-				for(Prestamo prestamo:e.getPrestamos()) {
-					sesion.delete(prestamo);
-				}
+//				//Como Ejemplar tiene una lista de Prestamos, la recorro y los borro uno a uno en cascada
+//				for(Prestamo prestamo:e.getPrestamos()) {
+//					sesion.delete(prestamo);
+//				}
 				//borra el objeto Ejemplar en la BBDD
 				sesion.delete(ejemplar);
 				

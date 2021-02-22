@@ -3,6 +3,7 @@ package modelo.entidades;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -14,7 +15,7 @@ public class Ejemplar implements java.io.Serializable {
 	private Libro libro;
 	private int numEjemplar;
 	private String estado;
-	private ArrayList<Prestamo> prestamos = new ArrayList<Prestamo>();
+	private List<Prestamo> prestamos = new ArrayList<Prestamo>();
 
 	public Ejemplar() {
 	}
@@ -26,7 +27,7 @@ public class Ejemplar implements java.io.Serializable {
 		this.estado = estado;
 	}
 
-	public Ejemplar(int idEjemplar, Libro libro, int numEjemplar, String estado, ArrayList<Prestamo> prestamos) {
+	public Ejemplar(int idEjemplar, Libro libro, int numEjemplar, String estado, List<Prestamo> prestamos) {
 		this.idEjemplar = idEjemplar;
 		this.libro = libro;
 		this.numEjemplar = numEjemplar;
@@ -66,11 +67,11 @@ public class Ejemplar implements java.io.Serializable {
 		this.estado = estado;
 	}
 
-	public ArrayList<Prestamo> getPrestamos() {
+	public List<Prestamo> getPrestamos() {
 		return this.prestamos;
 	}
 
-	public void setPrestamos(ArrayList<Prestamo> prestamos) {
+	public void setPrestamos(List<Prestamo> prestamos) {
 		this.prestamos = prestamos;
 	}
 
