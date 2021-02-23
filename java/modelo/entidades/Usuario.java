@@ -1,6 +1,7 @@
 package modelo.entidades;
 // Generated 27 ene. 2021 10:46:18 by Hibernate Tools 5.2.12.Final
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -15,21 +16,21 @@ public class Usuario implements java.io.Serializable {
 	private int idUsuario;
 	private String nombre;
 	private String apellidos;
-	private Date fechaNacimiento;
+	private LocalDate fechaNacimiento;
 	private List<Prestamo> prestamos = new ArrayList<Prestamo>();
 	private Contactousuario contactousuarios = new Contactousuario();
 
 	public Usuario() {
 	}
 
-	public Usuario(int idUsuario, String nombre, String apellidos, Date fechaNacimiento) {
+	public Usuario(int idUsuario, String nombre, String apellidos, LocalDate fechaNacimiento) {
 		this.idUsuario = idUsuario;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
-	public Usuario(int idUsuario, String nombre, String apellidos, Date fechaNacimiento, Contactousuario contactousuarios,
+	public Usuario(int idUsuario, String nombre, String apellidos, LocalDate fechaNacimiento, Contactousuario contactousuarios,
 			List<Prestamo> prestamos) {
 		this.idUsuario = idUsuario;
 		this.nombre = nombre;
@@ -63,11 +64,11 @@ public class Usuario implements java.io.Serializable {
 		this.apellidos = apellidos;
 	}
 
-	public Date getFechaNacimiento() {
+	public LocalDate getFechaNacimiento() {
 		return this.fechaNacimiento;
 	}
 
-	public void setFechaNacimiento(Date fechaNacimiento) {
+	public void setFechaNacimiento(LocalDate fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 

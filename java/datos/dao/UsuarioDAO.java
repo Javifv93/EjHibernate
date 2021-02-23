@@ -52,8 +52,8 @@ public class UsuarioDAO {
 		Transaction transaccion = null;
 		/**Try-whit-resources: Inicia la Session y al salir del try se cierra sola*/
 		try (Session sesion = Conexion.obtenerSesion() ) {
-			Usuario u = obtenerUsuarioPorID(usuario.getIdUsuario());
-			if(u!=null) {
+//			Usuario u = obtenerUsuarioPorID(usuario.getIdUsuario());
+//			if(u!=null) {
 				//Inicias la transacción
 				transaccion = sesion.beginTransaction();
 					
@@ -65,8 +65,8 @@ public class UsuarioDAO {
 				sesion.delete(usuario);
 					
 				transaccion.commit();
-				sesion.refresh(usuario);
-			}
+//				sesion.refresh(usuario);
+//			}
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -97,5 +97,8 @@ public class UsuarioDAO {
 				transaccion.rollback();
 			}
 		}
+	}
+	public void obtenerUsuariosQueTienenLibrosEnLosPrestamos() {
+		
 	}
 }

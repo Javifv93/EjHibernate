@@ -12,7 +12,7 @@
         <property generated="never" lazy="false" name="apellidos" optimistic-lock="true" type="string" unique="false">
             <column length="100" name="Apellidos" not-null="true"/>
         </property>
-        <property generated="never" lazy="false" name="fechaNacimiento" optimistic-lock="true" type="date" unique="false">
+        <property generated="never" lazy="false" name="fechaNacimiento" optimistic-lock="true" type="java.time.LocalDate" unique="false">
             <column length="10" name="FechaNacimiento" not-null="true"/>
         </property>
         <one-to-one cascade="all" name="contactousuarios" class="modelo.entidades.Contactousuario"></one-to-one>

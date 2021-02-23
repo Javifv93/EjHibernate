@@ -12,10 +12,10 @@
         <many-to-one class="modelo.entidades.Usuario" embed-xml="true" fetch="select" insert="true" name="usuario" not-found="exception" optimistic-lock="true" unique="false" update="true">
             <column name="IdUsuario" not-null="true"/>
         </many-to-one>
-        <property generated="never" lazy="false" name="fechaPrestamo" optimistic-lock="true" type="date" unique="false">
+        <property generated="never" lazy="false" name="fechaPrestamo" optimistic-lock="true" type="java.time.LocalDate" unique="false">
             <column length="10" name="FechaPrestamo" not-null="true"/>
         </property>
-        <property generated="never" lazy="false" name="fechaDevolucion" optimistic-lock="true" type="date" unique="false">
+        <property generated="never" lazy="false" name="fechaDevolucion" optimistic-lock="true" type="java.time.LocalDate" unique="false">
             <column length="10" name="FechaDevolucion" not-null="true"/>
         </property>
     </class>

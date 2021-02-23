@@ -4,11 +4,14 @@ import java.text.DateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import datos.dao.AutorDAO;
 import datos.dao.ContactousuarioDAO;
+import datos.dao.EjemplarDAO;
 import datos.dao.LibroDAO;
+import datos.dao.PrestamoDAO;
 import datos.dao.UsuarioDAO;
 import modelo.entidades.Autor;
 import modelo.entidades.Contactousuario;
@@ -22,6 +25,8 @@ public class Programa {
 	private static AutorDAO autdao = new AutorDAO();
 	private static ContactousuarioDAO contdao = new ContactousuarioDAO();
 	private static UsuarioDAO usudao = new UsuarioDAO();
+	private static PrestamoDAO presdao = new PrestamoDAO();
+	private static EjemplarDAO ejedao = new EjemplarDAO();
 	
 	public static void main(String[] args) {
 	//AP 7
@@ -42,16 +47,38 @@ public class Programa {
 //		libdao.borrarLibro(l1);
 		
 		//Relacion 1:1 con existencia
-//		Usuario usuario = new Usuario(-1, "Usuario", "Apellidos", new Date(2020,12,25));
+//		Usuario usuario = new Usuario(-1, "Usuario", "Apellidos", LocalDate.now());
 //		Contactousuario contacto = new Contactousuario(0, "jaja@gmail.com", "621321512", "141521152");
 //		contacto.setUsuario(usuario);
 //		usuario.setContactousuarios(contacto);
-//		
 //		usudao.insertarUsuario(usuario);
-		
+//		
+//		usudao.borrarUsuario(usuario);
+//		
 		//Relacion N:M convertida en dos 1:N
-		Usuario usuario = new Usuario(-1,"Usuario", "Apellidos", new Date(2020,11,11));
+		Usuario usuario = new Usuario(-1,"Usuario", "Apellidos", LocalDate.now());
 		Contactousuario contacto = new Contactousuario(0, "jaja@gmail.com", "621321512", "141521152");
-		Prestamo prestamo = new Prestamo(
+		contacto.setUsuario(usuario);
+		usuario.setContactousuarios(contacto);
+		usudao.insertarUsuario(usuario);
+		
+		Libro libro = new Libro((Integer.toString((int)(Math.random()*1000)+1)), "Titulo", "Editorial", 2421.2f);
+		libdao.insertarLibro(libro);
+		
+		Ejemplar ejemplar = new Ejemplar(-1,libro,123,"Libre");
+		Prestamo prestamo = new Prestamo(-1,ejemplar,usuario, LocalDate.now(), LocalDate.of(2312, 2, 2));
+		
+		ejedao.insertarEjemplar(ejemplar);
+		presdao.insertarPrestamo(prestamo);
+		
+		List<Prestamo> listaPrestamos = (usudao.obtenerUsuarioPorID(55).getPrestamos());
+		Iterator it = listaPrestamos.iterator();
+		while(it.hasNext()) {
+			Prestamo p = (Prestamo) it.next();
+			if(p.getFechaDevolucion()==null) {
+				p.setFechaDevolucion(LocalDate.now());
+				presdao.modificarPrestamo(p);
+			}
+		}
 	}
 }

@@ -1,6 +1,7 @@
 package modelo.entidades;
 // Generated 27 ene. 2021 10:46:18 by Hibernate Tools 5.2.12.Final
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -11,13 +12,13 @@ public class Prestamo implements java.io.Serializable {
 	private int idPrestamo;
 	private Ejemplar ejemplar;
 	private Usuario usuario;
-	private Date fechaPrestamo;
-	private Date fechaDevolucion;
+	private LocalDate fechaPrestamo;
+	private LocalDate fechaDevolucion;
 
 	public Prestamo() {
 	}
 
-	public Prestamo(int idPrestamo, Ejemplar ejemplar, Usuario usuario, Date fechaPrestamo, Date fechaDevolucion) {
+	public Prestamo(int idPrestamo, Ejemplar ejemplar, Usuario usuario, LocalDate fechaPrestamo, LocalDate fechaDevolucion) {
 		this.idPrestamo = idPrestamo;
 		this.ejemplar = ejemplar;
 		this.usuario = usuario;
@@ -49,19 +50,19 @@ public class Prestamo implements java.io.Serializable {
 		this.usuario = usuario;
 	}
 
-	public Date getFechaPrestamo() {
+	public LocalDate getFechaPrestamo() {
 		return this.fechaPrestamo;
 	}
 
-	public void setFechaPrestamo(Date fechaPrestamo) {
+	public void setFechaPrestamo(LocalDate fechaPrestamo) {
 		this.fechaPrestamo = fechaPrestamo;
 	}
 
-	public Date getFechaDevolucion() {
+	public LocalDate getFechaDevolucion() {
 		return this.fechaDevolucion;
 	}
 
-	public void setFechaDevolucion(Date fechaDevolucion) {
+	public void setFechaDevolucion(LocalDate fechaDevolucion) {
 		this.fechaDevolucion = fechaDevolucion;
 	}
 
