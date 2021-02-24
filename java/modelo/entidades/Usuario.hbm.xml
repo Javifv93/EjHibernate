@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Generated 27 ene. 2021 10:46:18 by Hibernate Tools 5.2.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="false">
     <class catalog="ejercicioorm" dynamic-insert="false" dynamic-update="false" mutable="true" name="modelo.entidades.Usuario" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="usuario">
         <id name="idUsuario" type="int">
             <column name="IdUsuario"/>
@@ -16,7 +16,7 @@
             <column length="10" name="FechaNacimiento" not-null="true"/>
         </property>
         <one-to-one cascade="all" name="contactousuarios" class="modelo.entidades.Contactousuario"></one-to-one>
-        <bag embed-xml="true" fetch="select" inverse="false" lazy="true" mutable="true" name="prestamos" optimistic-lock="true" table="prestamo">
+        <bag embed-xml="true" fetch="select" inverse="false" lazy="false" mutable="true" name="prestamos" optimistic-lock="true" table="prestamo">
             <key on-delete="noaction">
                 <column name="IdUsuario" not-null="true"/>
             </key>

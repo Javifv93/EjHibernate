@@ -47,7 +47,7 @@ public class Programa {
 //		libdao.borrarLibro(l1);
 		
 		//Relacion 1:1 con existencia
-//		Usuario usuario = new Usuario(-1, "Usuario", "Apellidos", LocalDate.now());
+//		Usuario usuario = new Usuario(-1, "Usuario", "Apellidos", LocalDate.of(2010, 2, 2));
 //		Contactousuario contacto = new Contactousuario(0, "jaja@gmail.com", "621321512", "141521152");
 //		contacto.setUsuario(usuario);
 //		usuario.setContactousuarios(contacto);
@@ -56,29 +56,36 @@ public class Programa {
 //		usudao.borrarUsuario(usuario);
 //		
 		//Relacion N:M convertida en dos 1:N
-		Usuario usuario = new Usuario(-1,"Usuario", "Apellidos", LocalDate.now());
-		Contactousuario contacto = new Contactousuario(0, "jaja@gmail.com", "621321512", "141521152");
-		contacto.setUsuario(usuario);
-		usuario.setContactousuarios(contacto);
-		usudao.insertarUsuario(usuario);
+//		Usuario usuario = new Usuario(-1,"Usuario", "Apellidos", LocalDate.now());
+//		Contactousuario contacto = new Contactousuario(0, "jaja@gmail.com", "621321512", "141521152");
+//		contacto.setUsuario(usuario);
+//		usuario.setContactousuarios(contacto);
+//		usudao.insertarUsuario(usuario);
+//		
+//		Libro libro = new Libro((Integer.toString((int)(Math.random()*1000)+1)), "Titulo", "Editorial", 2421.2f);
+//		libdao.insertarLibro(libro);
+//		
+//		Ejemplar ejemplar = new Ejemplar(-1,libro,123,"Libre");
+//		Prestamo prestamo = new Prestamo(-1,ejemplar,usuario, LocalDate.now(), LocalDate.of(2312, 2, 2));
+//		
+//		ejedao.insertarEjemplar(ejemplar);
+//		presdao.insertarPrestamo(prestamo);
+//		
+//		List<Prestamo> listaPrestamos = (usudao.obtenerUsuarioPorID(55).getPrestamos());
+//		Iterator it = listaPrestamos.iterator();
+//		while(it.hasNext()) {
+//			Prestamo p = (Prestamo) it.next();
+//			if(p.getFechaDevolucion()==null) {
+//				p.setFechaDevolucion(LocalDate.now());
+//				presdao.modificarPrestamo(p);
+//			}
+//		}
 		
-		Libro libro = new Libro((Integer.toString((int)(Math.random()*1000)+1)), "Titulo", "Editorial", 2421.2f);
-		libdao.insertarLibro(libro);
+		//AP 8
+		//usudao.queryObtenerUsuariosPorDNI();
+		//usudao.queryObtenerUsuariosQueTienenLibrosEnLosPrestamos();
+		//usudao.queryObtenerUsuariosMenoresDeEdad();
 		
-		Ejemplar ejemplar = new Ejemplar(-1,libro,123,"Libre");
-		Prestamo prestamo = new Prestamo(-1,ejemplar,usuario, LocalDate.now(), LocalDate.of(2312, 2, 2));
-		
-		ejedao.insertarEjemplar(ejemplar);
-		presdao.insertarPrestamo(prestamo);
-		
-		List<Prestamo> listaPrestamos = (usudao.obtenerUsuarioPorID(55).getPrestamos());
-		Iterator it = listaPrestamos.iterator();
-		while(it.hasNext()) {
-			Prestamo p = (Prestamo) it.next();
-			if(p.getFechaDevolucion()==null) {
-				p.setFechaDevolucion(LocalDate.now());
-				presdao.modificarPrestamo(p);
-			}
-		}
+		libdao.
 	}
 }

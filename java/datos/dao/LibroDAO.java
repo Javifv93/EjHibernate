@@ -1,7 +1,12 @@
 package datos.dao;
 
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Scanner;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import datos.configuracion.Conexion;
 import modelo.entidades.Autor;
@@ -101,4 +106,45 @@ public class LibroDAO {
 			}
 		}
 	}
+	public void queryObtenerLibrosPrestadosEntreDosFechas() {
+		try (Session sesion = Conexion.obtenerSesion() ) {
+			LocalDate fechaIni = introducirLocalDates();
+			LocalDate fechaFin = introducirLocalDates();
+//			Query<Usuario> q = sesion.createQuery("FROM Usuario WHERE idUsuario like :dniUsuario");
+//			q.setParameter("dniUsuario", dni);
+//			q.setReadOnly(true);
+//			
+//			Usuario user = q.getSingleResult();
+//			System.out.println("Resultado: " + user.getIdUsuario());
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public LocalDate introducirLocalDates() {
+		System.out.println("Introduce la primera fecha:\t Año: ");
+		Scanner sc = new Scanner(System.in);
+		int año = sc.nextInt();
+		System.out.println("Mes: ");
+		sc = new Scanner(System.in);
+		int mes = sc.nextInt();
+		System.out.println("Dia: ");
+		sc = new Scanner(System.in);
+		int dia = sc.nextInt();
+		return LocalDate.of(año, mes, dia);
+	}
+//	public void queryObtenerUsuariosQueTienenLibrosEnLosPrestamos() {
+//		try (Session sesion = Conexion.obtenerSesion() ) {
+//			Query<Usuario> q = sesion.createQuery("SELECT u FROM Usuario u, Prestamo p WHERE u.idUsuario = p.usuario.idUsuario");
+//			q.setReadOnly(true);
+//			
+//			List<Usuario> lista = q.getResultList();
+//			System.out.println("Resultado: ");
+//			for(Usuario u:lista) {
+//				System.out.println("- " + u.getNombre());
+//			}
+//		}catch(Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 }
