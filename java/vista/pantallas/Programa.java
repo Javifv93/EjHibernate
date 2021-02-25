@@ -86,6 +86,8 @@ public class Programa {
 		//usudao.queryObtenerUsuariosQueTienenLibrosEnLosPrestamos();
 		//usudao.queryObtenerUsuariosMenoresDeEdad();
 		
-		libdao.
+		//libdao.queryObtenerLibrosPrestadosEntreDosFechas();
+//		libdao.queryObtenerLibrosPorNombreDeAutor("fulanito");
+		libdao.queryObtenerLibrosPrecioMenorQue20oSinPrecio();
 	}
 }

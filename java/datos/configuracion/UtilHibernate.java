@@ -3,6 +3,7 @@ package datos.configuracion;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+/**Clase para realizar la conexion con la base de datos*/
 public class UtilHibernate {
 	private static final SessionFactory sessionFactory;
 	

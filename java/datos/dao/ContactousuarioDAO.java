@@ -12,6 +12,7 @@ import modelo.entidades.Usuario;
 
 public class ContactousuarioDAO {
 
+	/**Inserta un ContactoUsuario en base a un objeto ContactoUsuario*/
 	public void insertarContactousuario(Contactousuario contactousuario) {
 		Transaction transaccion = null;
 		/**Try-whit-resources: Inicia la Session y al salir del try se cierra sola*/
@@ -33,7 +34,9 @@ public class ContactousuarioDAO {
 				transaccion.rollback();
 			}
 		}
-	}
+	}	
+	
+	/**Obtiene un objeto ContactoUsuario en base a un ID*/
 	public Contactousuario obtenerContactousuarioPorID(int id) {
 		Contactousuario contactousuario;
 		try (Session sesion = Conexion.obtenerSesion() ) {

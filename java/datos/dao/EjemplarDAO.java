@@ -12,6 +12,7 @@ import modelo.entidades.Usuario;
 
 public class EjemplarDAO {
 
+	/**Inserta un Ejemplar en base a un objeto Ejemplar*/
 	public void insertarEjemplar(Ejemplar ejemplar) {
 		Transaction transaccion = null;
 		/**Try-whit-resources: Inicia la Session y al salir del try se cierra sola*/
@@ -34,6 +35,8 @@ public class EjemplarDAO {
 			}
 		}
 	}
+	
+	/**Obtiene un objeto Ejemplar en base a un ID*/
 	public Ejemplar obtenerEjemplarPorID(int id) {
 		Ejemplar ejemplar;
 		try (Session sesion = Conexion.obtenerSesion() ) {

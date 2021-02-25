@@ -15,7 +15,8 @@ import modelo.entidades.Prestamo;
 import modelo.entidades.Usuario;
 
 public class UsuarioDAO {
-
+	
+	/**Inserta un Usuario en base a un objeto Usuario*/
 	public void insertarUsuario(Usuario usuario) {
 		Transaction transaccion = null;
 		/**Try-whit-resources: Inicia la Session y al salir del try se cierra sola*/
@@ -38,6 +39,8 @@ public class UsuarioDAO {
 			}
 		}
 	}
+	
+	/**Obtiene un objeto Usuario en base a un ID*/
 	public Usuario obtenerUsuarioPorID(int id) {
 		Usuario usuario;
 		try (Session sesion = Conexion.obtenerSesion() ) {

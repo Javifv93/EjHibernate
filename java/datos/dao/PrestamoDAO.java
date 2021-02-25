@@ -10,6 +10,8 @@ import modelo.entidades.Prestamo;
 import modelo.entidades.Usuario;
 
 public class PrestamoDAO {
+	
+	/**Inserta un Prestamo en base a un objeto Prestamo*/
 	public void insertarPrestamo(Prestamo prestamo) {
 		Transaction transaccion = null;
 		/**Try-whit-resources: Inicia la Session y al salir del try se cierra sola*/
@@ -32,6 +34,8 @@ public class PrestamoDAO {
 			}
 		}
 	}
+	
+	/**Obtiene un objeto Prestamo en base a un ID*/
 	public Prestamo obtenerPrestamoPorID(int id) {
 		Prestamo prestamo;
 		try (Session sesion = Conexion.obtenerSesion() ) {

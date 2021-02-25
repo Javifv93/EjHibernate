@@ -14,7 +14,6 @@ public class Autor implements java.io.Serializable {
 	private int idAutor;
 	private String nombre;
 	private String apellidos;
-	//private Set autorlibros = new HashSet(0);
 	private List<Libro> libros = new ArrayList<Libro>();
 
 	public Autor() {

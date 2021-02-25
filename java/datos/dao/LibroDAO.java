@@ -16,6 +16,7 @@ import modelo.entidades.Usuario;
 
 public class LibroDAO {
 
+	/**Inserta un Libro en base a un objeto Libro*/
 	public void insertarLibro(Libro libro) {
 		Transaction transaccion = null;
 		/**Try-whit-resources: Inicia la Session y al salir del try se cierra sola*/
@@ -110,19 +111,26 @@ public class LibroDAO {
 		try (Session sesion = Conexion.obtenerSesion() ) {
 			LocalDate fechaIni = introducirLocalDates();
 			LocalDate fechaFin = introducirLocalDates();
-//			Query<Usuario> q = sesion.createQuery("FROM Usuario WHERE idUsuario like :dniUsuario");
-//			q.setParameter("dniUsuario", dni);
-//			q.setReadOnly(true);
-//			
-//			Usuario user = q.getSingleResult();
-//			System.out.println("Resultado: " + user.getIdUsuario());
+			Query<Libro> q = sesion.createQuery("SELECT l FROM Libro l, Ejemplar e, Prestamo p "
+					+ "WHERE e.libro.codLibro = l.codLibro "
+					+ "AND e.idEjemplar = p.ejemplar.idEjemplar "
+					+ "AND p.fechaPrestamo BETWEEN :fechaIni AND :fechaFin");
+			q.setParameter("fechaIni", fechaIni);
+			q.setParameter("fechaFin", fechaFin);
+			q.setReadOnly(true);
+			
+			List<Libro> lista = q.getResultList();
+			System.out.println("Resultado: ");
+			for(Libro l:lista) {
+				System.out.println("- " + l.getTitulo());
+			}
 			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
 	public LocalDate introducirLocalDates() {
-		System.out.println("Introduce la primera fecha:\t Año: ");
+		System.out.println("Introduce la primera fecha:\r Año: ");
 		Scanner sc = new Scanner(System.in);
 		int año = sc.nextInt();
 		System.out.println("Mes: ");
@@ -133,18 +141,33 @@ public class LibroDAO {
 		int dia = sc.nextInt();
 		return LocalDate.of(año, mes, dia);
 	}
-//	public void queryObtenerUsuariosQueTienenLibrosEnLosPrestamos() {
-//		try (Session sesion = Conexion.obtenerSesion() ) {
-//			Query<Usuario> q = sesion.createQuery("SELECT u FROM Usuario u, Prestamo p WHERE u.idUsuario = p.usuario.idUsuario");
-//			q.setReadOnly(true);
-//			
-//			List<Usuario> lista = q.getResultList();
-//			System.out.println("Resultado: ");
-//			for(Usuario u:lista) {
-//				System.out.println("- " + u.getNombre());
-//			}
-//		}catch(Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
+	public void queryObtenerLibrosPorNombreDeAutor(String nombreAutor) {
+		try (Session sesion = Conexion.obtenerSesion() ) {
+			Query<Libro> qAutor = sesion.createQuery("SELECT libros FROM Autor WHERE nombre = :nombre") ;
+			qAutor.setParameter("nombre", nombreAutor);
+			qAutor.setReadOnly(true);
+			
+			List<Libro> lista = qAutor.getResultList();
+			for(Libro l:lista) {
+				System.out.println("- " + l.getTitulo());
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public void queryObtenerLibrosPrecioMenorQue20oSinPrecio() {
+		try (Session sesion = Conexion.obtenerSesion() ) {
+			Query<Libro> q = sesion.createQuery("FROM Libro WHERE precio < 20 OR precio = null") ;
+			q.setReadOnly(true);
+			
+			List<Libro> lista = q.getResultList();
+			for(Libro l:lista) {
+				System.out.println("- " + l.getTitulo());
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

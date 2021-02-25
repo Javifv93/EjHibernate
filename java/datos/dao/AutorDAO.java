@@ -9,6 +9,7 @@ import modelo.entidades.Usuario;
 
 public class AutorDAO {
 	
+	/**Inserta un Autor en base a un objeto Autor*/
 	public void insertarAutor(Autor autor) {
 		Transaction transaccion = null;
 		/**Try-whit-resources: Inicia la Session y al salir del try se cierra sola*/
@@ -30,6 +31,8 @@ public class AutorDAO {
 			}
 		}
 	}
+	
+	/**Obtiene un objeto Autor en base a un ID*/
 	public Autor obtenerAutorPorID(int id) {
 		Autor autor;
 		try (Session sesion = Conexion.obtenerSesion() ) {
