@@ -52,6 +52,7 @@ public class ContactousuarioDAO {
 		}
 		return contactousuario;
 	}
+	/**Borra el ContactoUsuario pasado por parametro de la BBDD*/
 	public void borrarContactoUsuario(Contactousuario contactousuario) {
 		Transaction transaccion = null;
 		/**Try-whit-resources: Inicia la Session y al salir del try se cierra sola*/
@@ -77,6 +78,8 @@ public class ContactousuarioDAO {
 			}
 		}
 	}
+	
+	/**Modifica el ContactoUsuario pasado por parametro en la BBDD*/
 	public void modificarContactousuario(Contactousuario contactousuario) {
 		Transaction transaccion = null;
 		/**Try-whit-resources: Inicia la Session y al salir del try se cierra sola*/

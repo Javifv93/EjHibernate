@@ -48,6 +48,7 @@ public class AutorDAO {
 		}
 		return autor;
 	}
+	/**Borra el Autor pasado por parametro de la BBDD*/
 	public void borrarAutor(Autor autor) {
 		Transaction transaccion = null;
 		/**Try-whit-resources: Inicia la Session y al salir del try se cierra sola*/
@@ -57,10 +58,6 @@ public class AutorDAO {
 				//Inicias la transacción
 				transaccion = sesion.beginTransaction();
 				
-//				//Como Autor tiene una lista de Libros, la recorro y los borro uno a uno en cascada
-//				for(Libro libro:a.getLibros()) {
-//					sesion.delete(libro);
-//				}
 				//borra el objeto autor en la BBDD
 				sesion.delete(autor); 
 				
@@ -77,6 +74,7 @@ public class AutorDAO {
 			}
 		}
 	}
+	/**Modifica el Autor pasado por parametro en la BBDD*/
 	public void modificarAutor(Autor autor) {
 		Transaction transaccion = null;
 		/**Try-whit-resources: Inicia la Session y al salir del try se cierra sola*/

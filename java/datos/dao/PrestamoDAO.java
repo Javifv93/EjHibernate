@@ -51,6 +51,7 @@ public class PrestamoDAO {
 		}
 		return prestamo;
 	}
+	/**Borra el Prestamo pasado por parametro de la BBDD*/
 	public void borrarPrestamo(Prestamo prestamo) {
 		Transaction transaccion = null;
 		/**Try-whit-resources: Inicia la Session y al salir del try se cierra sola*/
@@ -76,6 +77,7 @@ public class PrestamoDAO {
 			}
 		}
 	}
+	/**Modifica el Prestamo pasado por parametro en la BBDD*/
 	public void modificarPrestamo(Prestamo prestamo) {
 		Transaction transaccion = null;
 		/**Try-whit-resources: Inicia la Session y al salir del try se cierra sola*/

@@ -56,6 +56,7 @@ public class UsuarioDAO {
 		}
 		return usuario;
 	}
+	/**Borra el Usuario pasado por parametro de la BBDD*/
 	public void borrarUsuario(Usuario usuario) {
 		Transaction transaccion = null;
 		/**Try-whit-resources: Inicia la Session y al salir del try se cierra sola*/
@@ -65,10 +66,6 @@ public class UsuarioDAO {
 				//Inicias la transacción
 				transaccion = sesion.beginTransaction();
 					
-//				//Como Usuario tiene una lista de Prestamos, la recorro y los borro uno a uno en cascada
-//				for(Prestamo prestamo:u.getPrestamos()) {				
-//					sesion.delete(prestamo);
-//				}
 				//borra el objeto usuario en la BBDD
 				sesion.delete(usuario);
 					
@@ -85,6 +82,7 @@ public class UsuarioDAO {
 			}
 		}
 	}
+	/**Modifica el Usuario pasado por parametro en la BBDD*/
 	public void modificarUsuario(Usuario usuario) {
 		Transaction transaccion = null;
 		/**Try-whit-resources: Inicia la Session y al salir del try se cierra sola*/
@@ -106,6 +104,7 @@ public class UsuarioDAO {
 			}
 		}
 	}
+	/**Hace una consulta en la BBDD para obtener el Usuario con el ID obtenido por consola*/
 	public void queryObtenerUsuariosPorDNI() {
 		try (Session sesion = Conexion.obtenerSesion() ) {
 			System.out.println("Introduce el DNI del usuario");
@@ -122,6 +121,7 @@ public class UsuarioDAO {
 			e.printStackTrace();
 		}
 	}
+	/**Hace una consulta en la BBDD para obtener un listado de Usuarios que tienen libros en prestamo*/
 	public void queryObtenerUsuariosQueTienenLibrosEnLosPrestamos() {
 		try (Session sesion = Conexion.obtenerSesion() ) {
 			Query<Usuario> q = sesion.createQuery("SELECT u FROM Usuario u, Prestamo p WHERE u.idUsuario = p.usuario.idUsuario");
@@ -136,12 +136,15 @@ public class UsuarioDAO {
 			e.printStackTrace();
 		}
 	}
+	/**Hace una consulta en la BBDD para obtener un listado de Usuarios menores de 18 años*/
 	public void queryObtenerUsuariosMenoresDeEdad() {
 		try (Session sesion = Conexion.obtenerSesion() ) {
 			Query<Usuario> q = sesion.createQuery("FROM Usuario WHERE FechaNacimiento < :fechaMayorEdad");
-			q.setParameter(
+			//Paso un LocalDate que, en el metodo .of obtiene la fecha de LocalDate.now y le resta 18 años
+			// ******* EN LA BBDD NO HAY MAYORES DE 18 AÑOS. PUEDES BAJAR LA EDAD DE LA BUSQUEDA O INTRODUCIR UN USUARIO MAYOR DE EDAD
+			q.setParameter(		
 					"fechaMayorEdad", LocalDate.of((
-							LocalDate.now().getYear() - 10), 
+							LocalDate.now().getYear() - 18), 
 							LocalDate.now().getMonth(),
 							LocalDate.now().getDayOfMonth())
 					);

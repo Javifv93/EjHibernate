@@ -29,7 +29,6 @@ public class Autor implements java.io.Serializable {
 		this.idAutor = idAutor;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
-		//this.autorlibros = autorlibros;
 		this.libros = libros;
 	}
 
@@ -56,14 +55,6 @@ public class Autor implements java.io.Serializable {
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
-
-//	public Set getAutorlibros() {
-//		return this.autorlibros;
-//	}
-//
-//	public void setAutorlibros(Set autorlibros) {
-//		this.autorlibros = autorlibros;
-//	}
 	public List<Libro> getLibros(){
 		return libros;
 	}

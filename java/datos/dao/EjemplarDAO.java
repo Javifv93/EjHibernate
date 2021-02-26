@@ -52,6 +52,7 @@ public class EjemplarDAO {
 		}
 		return ejemplar;
 	}
+	/**Borra el Ejemplar pasado por parametro de la BBDD*/
 	public void borrarEjemplar(Ejemplar ejemplar) {
 		Transaction transaccion = null;
 		/**Try-whit-resources: Inicia la Session y al salir del try se cierra sola*/
@@ -61,10 +62,6 @@ public class EjemplarDAO {
 				//Inicias la transacción
 				transaccion = sesion.beginTransaction();
 				
-//				//Como Ejemplar tiene una lista de Prestamos, la recorro y los borro uno a uno en cascada
-//				for(Prestamo prestamo:e.getPrestamos()) {
-//					sesion.delete(prestamo);
-//				}
 				//borra el objeto Ejemplar en la BBDD
 				sesion.delete(ejemplar);
 				
@@ -81,6 +78,7 @@ public class EjemplarDAO {
 			}
 		}
 	}
+	/**Modifica el Ejemplar pasado por parametro en la BBDD*/
 	public void modificarEjemplar(Ejemplar ejemplar) {
 		Transaction transaccion = null;
 		/**Try-whit-resources: Inicia la Session y al salir del try se cierra sola*/

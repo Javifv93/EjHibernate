@@ -29,8 +29,8 @@ public class Programa {
 	private static EjemplarDAO ejedao = new EjemplarDAO();
 	
 	public static void main(String[] args) {
-	//AP 7
-		//Relación N:M
+		/**AP 7*/
+		/**Relación N:M*/
 //		Libro l1 = new Libro("003", "Titulo1", "Editorial", 3.45f);
 //		Autor a1 = new Autor(1, "fulanito", "detal");
 //		ArrayList<Autor> listaAutores = new ArrayList<Autor>();
@@ -40,13 +40,13 @@ public class Programa {
 //		libdao.insertarLibro(l1);
 //		autdao.insertarAutor(a1);
 		
-		//Relacion 1:N sin existencia
+		/**Relacion 1:N sin existencia*/
 //		Libro l1 = new Libro("004", "Titulo", "Editorial", 3.45f);
 //		
 //		//libdao.insertarLibro(l1);
 //		libdao.borrarLibro(l1);
 		
-		//Relacion 1:1 con existencia
+		/**Relacion 1:1 con existencia*/
 //		Usuario usuario = new Usuario(-1, "Usuario", "Apellidos", LocalDate.of(2010, 2, 2));
 //		Contactousuario contacto = new Contactousuario(0, "jaja@gmail.com", "621321512", "141521152");
 //		contacto.setUsuario(usuario);
@@ -55,7 +55,7 @@ public class Programa {
 //		
 //		usudao.borrarUsuario(usuario);
 //		
-		//Relacion N:M convertida en dos 1:N
+		/**Relacion N:M convertida en dos 1:N*/
 //		Usuario usuario = new Usuario(-1,"Usuario", "Apellidos", LocalDate.now());
 //		Contactousuario contacto = new Contactousuario(0, "jaja@gmail.com", "621321512", "141521152");
 //		contacto.setUsuario(usuario);
@@ -81,13 +81,13 @@ public class Programa {
 //			}
 //		}
 		
-		//AP 8
-		//usudao.queryObtenerUsuariosPorDNI();
-		//usudao.queryObtenerUsuariosQueTienenLibrosEnLosPrestamos();
-		//usudao.queryObtenerUsuariosMenoresDeEdad();
+		/**AP 8*/
+//		usudao.queryObtenerUsuariosPorDNI();
+//		usudao.queryObtenerUsuariosQueTienenLibrosEnLosPrestamos();
+//		usudao.queryObtenerUsuariosMenoresDeEdad();
 		
-		//libdao.queryObtenerLibrosPrestadosEntreDosFechas();
+//		libdao.queryObtenerLibrosPrestadosEntreDosFechas();
 //		libdao.queryObtenerLibrosPorNombreDeAutor("fulanito");
-		libdao.queryObtenerLibrosPrecioMenorQue20oSinPrecio();
+//		libdao.queryObtenerLibrosPrecioMenorQue20oSinPrecio();
 	}
 }

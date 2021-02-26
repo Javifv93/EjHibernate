@@ -39,6 +39,7 @@ public class LibroDAO {
 			}
 		}
 	}
+	/**Obtiene un objeto Libro en base a un ID*/
 	public Libro obtenerLibroPorID(String id) {
 		Libro libro;
 		try (Session sesion = Conexion.obtenerSesion() ) {
@@ -54,6 +55,7 @@ public class LibroDAO {
 		}
 		return libro;
 	}
+	/**Borra el Libro pasado por parametro de la BBDD*/
 	public void borrarLibro(Libro libro) {
 		Transaction transaccion = null;
 		/**Try-whit-resources: Inicia la Session y al salir del try se cierra sola*/
@@ -63,13 +65,6 @@ public class LibroDAO {
 				//Inicias la transacción
 				transaccion = sesion.beginTransaction();
 				
-//				//Como cada Libro tiene una lista de Autores y una lista de Ejemplares, las recorro y los borro uno a uno en cascada
-//				for(Autor autor:l.getAutores()) {
-//					sesion.delete(autor);
-//				}
-//				for(Ejemplar ejemplar:l.getEjemplares()) {
-//					sesion.delete(ejemplar);
-//				}
 				//borra el objeto Libro en la BBDD
 				sesion.delete(libro);
 				
@@ -86,6 +81,7 @@ public class LibroDAO {
 			}
 		}
 	}
+	/**Modifica el Libro pasado por parametro en la BBDD*/
 	public void modificarLibro(Libro libro) {
 		Transaction transaccion = null;
 		/**Try-whit-resources: Inicia la Session y al salir del try se cierra sola*/
@@ -107,6 +103,7 @@ public class LibroDAO {
 			}
 		}
 	}
+	/**Hace una consulta en la BBDD para obtener un listado de Libros con fecha de prestamo entre dos fechas*/
 	public void queryObtenerLibrosPrestadosEntreDosFechas() {
 		try (Session sesion = Conexion.obtenerSesion() ) {
 			LocalDate fechaIni = introducirLocalDates();
@@ -129,6 +126,7 @@ public class LibroDAO {
 			e.printStackTrace();
 		}
 	}
+	/**Metodo para pedir por consola una fecha y convertirla a formato LocalDate*/
 	public LocalDate introducirLocalDates() {
 		System.out.println("Introduce la primera fecha:\r Año: ");
 		Scanner sc = new Scanner(System.in);
@@ -141,6 +139,7 @@ public class LibroDAO {
 		int dia = sc.nextInt();
 		return LocalDate.of(año, mes, dia);
 	}
+	/**Hace una consulta en la BBDD para obtener una lista de Libros escritos por el autor pasado por parametro*/
 	public void queryObtenerLibrosPorNombreDeAutor(String nombreAutor) {
 		try (Session sesion = Conexion.obtenerSesion() ) {
 			Query<Libro> qAutor = sesion.createQuery("SELECT libros FROM Autor WHERE nombre = :nombre") ;
@@ -156,6 +155,7 @@ public class LibroDAO {
 			e.printStackTrace();
 		}
 	}
+	/**Hace una consulta en la BBDD para obtener una lista de Libros con un precio menor que 20 o nulo*/
 	public void queryObtenerLibrosPrecioMenorQue20oSinPrecio() {
 		try (Session sesion = Conexion.obtenerSesion() ) {
 			Query<Libro> q = sesion.createQuery("FROM Libro WHERE precio < 20 OR precio = null") ;

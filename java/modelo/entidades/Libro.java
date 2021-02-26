@@ -37,8 +37,6 @@ public class Libro implements java.io.Serializable {
 		this.precio = precio;
 		this.autores = autores;
 		this.ejemplares = ejemplares;
-		//this.autorlibros = autorlibros;
-		//this.ejemplars = ejemplars;
 	}
 
 	public String getCodLibro() {
